@@ -1,181 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
 <head>
-<!-- 2023-08-13 Sun 13:12 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Munkres Topological Groups Problem 5</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Jack Ceroni" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px;} </style>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
+<title>Website</title>
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
 </head>
-<body>
-<div id="content">
-<h1 class="title">Munkres Topological Groups Problem 7</h1>
-<p>
-<b>Part A:</b> Let \(\pi\) be the projection of \(G \rightarrow G/H\). Let \(\pi_{\alpha} = \pi \circ f_{\alpha}\) be the map from \(G \rightarrow G/H\) (which is surjective continuous, as it is the composition of surjective continuous functions).
-The inverse image of coset \(xH\) under \(\pi \circ f_{\alpha}\) is the collection of \(\{\alpha^{-1} \cdot x \cdot h \ | \ h \in H\}\). All such collections will give the set \(G/H\). Thus, by Corollary 22.3 (an immediate consequence
-of the universal property of the quotient topology), the induced map from \(G/H\) to \(G/H\) which sends \(xH\) to \((\alpha \cdot x)H\) is a homeomorphism.
-</p>
 
-<p>
-<b>Part B:</b> Given a one-point set \(\{xH\} \in G/H\), note that \(\pi^{-1}(\{xH\}) = xH = f_x(H) \in G\). Since \(H\) is closed and \(f_x\) is a homeomorphism, \(f_X(H)\) must be closed, so \(\{xH\}\) must be closed in \(G/H\).
-</p>
+<body style="max-width:100ch">
+  <header>
+    <center>
+    <h2>Jack Ceroni's Home Page</h2>
+    </center>
+  </header>
+  <h3>About</h3>
+  <p>I am (as of Fall 2024) a fourth-year pure mathematics student at the University of Toronto. 
+    Right now, I'm working at <a href="https://www.xanadu.ai/">Xanadu</a>, a quantum computing company located in Toronto, on fault-tolerant quantum algorithm research.
+    </p>
+    <p>
+      Before this, I worked at the Massachusetts Institute of Technology on the theory of quantum algorithmic primitives, under the supervision of
+      <a href="https://scholar.google.com/citations?user=QKyb_9oAAAAJ&hl=en" style="color:red;"> Professor Isaac Chuang</a>, and before that 
+      I was the first non-founding employee (although admittedly a less important one than subsequent hardware-genius hires) at <a href="https://extropic.ai">Extropic</a> (I took a gap year from 2022-2023 to do this).
+    </p>
 
-<p>
-<b>Part C:</b> 
-<a href="shlok/index.html">Shlok's link</a>
-</p>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Aum Rawal</p>
-<p class="date">Created: 2023-08-13 Sun 13:12</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
-</body>
+    <p>Outside of my primary job/education, I do research with <a href="https://scholar.google.ca/citations?user=DSgKHOQAAAAJ&hl=en">Professor Nathan Wiebe</a> on quantum algorithms.
+        My mathematical interests are mostly geometric and topological in flavour. Right now, I am particularly interested in Hamiltonian systems, Lie algebroids, and K-theory.
+         I also like to think about the synthesis of pure mathematics with fault-tolerant quantum algorithms and quantum simulation, as well as <a href="https://scholar.google.com/citations?user=PRjgI8kAAAAJ&hl=en">complexity</a>.
+    </p>
+
+    <h4 style="margin-top:40px;">I sometimes write stuff online</h4>
+    <p>This is my "knowledge repository": <a href="https://thecoherentstate.github.io">The Coherent State</a>. I actually have a lot of content on this site, but it's not 
+      very accessible via the home page. Hopefully I fix this soon!</p>
+    <p>Read my book reviews (or else): <a href="https://www.instagram.com/blacklodgebookreviews/">Black Lodge Book Reviews</a></p>
+    <p><a href="https://github.com/Lucaman99">Github</a> | <a href="https://stackexchange.com/users/14606850/jack-ceroni">Stack Exchange</a> | <a href="https://en.wikipedia.org/wiki/User:JackCer9">Wikipedia</a> | <a href="https://scholar.google.com/citations?user=I9NmuAsAAAAJ&hl=en">Google Scholar</a></p>
+    <p>Send me an email: <a href="MAILTO:jackceroni@gmail.com">jackceroni@gmail.com</a>
+    </p>
+
+    <br>
+
+    <center> 
+        <i>Some inspiration. Taken during trips to Italy, England, Greece. A reminder to create beautiful things.</i>
+        </center>
+        <br>
+        <div class="row" style="display:flex;padding-bottom:10px;">
+        <img src="./assets/duomo.JPG" style="height:500px;">
+        <img src="./assets/england.jpg" style="height:500px;padding-left:10px;">
+    </div>
+        <img src="./assets/athens.jpeg">
+        </body>
+
 </html>
+<style>
+  body {
+    background-color: black;
+    color:white;
+  }
+  a {
+    color:red !important;
+  }
+</style>
