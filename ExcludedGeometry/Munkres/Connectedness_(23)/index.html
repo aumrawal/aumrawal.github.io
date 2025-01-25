@@ -215,6 +215,18 @@ Let \( Y = \cup A_n \), and suppose \( Y = C \cup D\) such that \( C, D\) are no
 Since \( A_1 \) is connected, let \( A_1 \subset C\) as \(A_1 \) is connected. However, \( A_1 \cap A_2 = \phi\)   \( \Rightarrow\) \( A_2 \subset C\), similarly \( A_3 \subset C\), ad infinitum. Therefore \( Y \cup D = \phi\), which is a contradiction. Hence, \( Y \) has no separation, and thus it is connected. 
 </p>
 
+
+<h2> Problem 3 </h2>
+
+<p> 
+  Let \(Y = A \cup (\cup A_{\alpha} = C \cup D \), where C and D are disjoint, non-empty, and open in Y. Now, \( A \subset C\), as \( A\) is connected, also \(A_{\alpha} \subset C\), as \( A \cap A_\alpha \neq \phi\) for all \( \alpha \) and \( A_\alpha\) is connected. Therefore \( Y \cap D = \phi \), which is a contradiction, and hence Y is connected. 
+</p>
+
+<h2> Problem 4 </h2>
+  <p>
+  \( \tau_f\) is a finite complement topology of X if it contains all subsets \(U\) of X such that \( X -U\) is either finite or all of X. It is given that X is infinite. Now, suppose X is disconnected, therefore \( X = A \cup B\) such that A and B are disjoint, non-empty, and open (as well as closed) in \( \tau_f\). If A is closed, then \((X-A) = B\) should be open, which implies B is finite. Similarly, A can be argued to be finite. But X is infinite, and hence could not be equal to union of two finite sets. Therefore, X has to be connected in finite complement topology.   
+  </p>
+
 <h2> Problem 6 </h2>
 <p> \(A,C \subset X\),  \( C\cap A \neq \phi, and \quad C \cap (X-A) \neq \phi \) . We need to prove that if C is a connected space, then C intersects Bd A. </p>
 <p>
@@ -224,18 +236,9 @@ Suppose C is connected, and does not intersect Bd A \( \Rightarrow C \cap \overl
 
 <h2> Problem 11 </h2>
 <p> 
-  \( p : X \mapsto Y\) is a quotient map. Suppose that each set \( p^{-1} \{y\}\) is connected, and Y is connected, then X should be connected. Let \( U = p^{-1}\{y\}\), thus each such U is connected. Suppose X is disconnected, therefore \( X = A \cup B\), where both A and B are non-empty disjoint open sets in topology of A.  As U is connected, all such \( p^{-1} \{y\}\) should be contained in either A or B. Thus, A and B are what we call, <b>{saturated sets} </b>, and a quotient map maps saturated sets of X to open sets of Y. Thus, \( Y = p(A) \cup p(B)\), where \( p(A), p(B) \) are open in Y. This is a contradiction as Y is connected, hence X should be connected. 
+  \( p : X \mapsto Y\) is a quotient map. Suppose that each set \( p^{-1} \{y\}\) is connected, and Y is connected, then X should be connected. Let \( U = p^{-1}\{y\}\), thus each such U is connected. Suppose X is disconnected, therefore \( X = A \cup B\), where both A and B are non-empty disjoint open sets in topology of A.  As U is connected, all such \( p^{-1} \{y\}\) should be contained in either A or B. Thus, A and B are what we call <b>(saturated sets) </b>, and a quotient map maps saturated sets of X to open sets of Y. Thus, \( Y = p(A) \cup p(B)\), where \( p(A), p(B) \) are open in Y. This is a contradiction as Y is connected, hence X should be connected. 
 </p>
   
-<p>
-<b>Part A:</b> Let \(\pi\) be the projection of \(G \rightarrow G/H\). Let \(\pi_{\alpha} = \pi \circ f_{\alpha}\) be the map from \(G \rightarrow G/H\) (which is surjective continuous, as it is the composition of surjective continuous functions).
-The inverse image of coset \(xH\) under \(\pi \circ f_{\alpha}\) is the collection of \(\{\alpha^{-1} \cdot x \cdot h \ | \ h \in H\}\). All such collections will give the set \(G/H\). Thus, by Corollary 22.3 (an immediate consequence
-of the universal property of the quotient topology), the induced map from \(G/H\) to \(G/H\) which sends \(xH\) to \((\alpha \cdot x)H\) is a homeomorphism.
-</p>
-
-<p>
-<b>Part B:</b> Given a one-point set \(\{xH\} \in G/H\), note that \(\pi^{-1}(\{xH\}) = xH = f_x(H) \in G\). Since \(H\) is closed and \(f_x\) is a homeomorphism, \(f_X(H)\) must be closed, so \(\{xH\}\) must be closed in \(G/H\).
-</p>
 
 </div>
 <div id="postamble" class="status">
