@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Munkres Topological Groups Problem 5</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Aum Rawal" />
+<meta name="author" content="Jack Ceroni" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: left;  /* Changed from center to left */
@@ -199,49 +199,4 @@
   <b> Let \(\tau\) and \(\tau'\) be two topologies on X. If \(\tau \supset \tau' \), what does connectedness of X in one topology imply about connectedness in the other ? </b>
 </p>
 <p>
-  Given that \(\tau \supset \tau'\), if $X$ is connected in \(\tau'\Rightarrow \nexists \)U  and V open in \(\tau' \Rightarrow \nexists \)U  and V open in \(\tau\). 
-   Thus, if X is connected in \(\tau'\), then X is connected in \(\tau\).
-</p>
-
-
-
-
-<h2> Problem 2</h2>
-<p>
-<b> We need to prove that \( \cup A_n\) is connected. </b>
-</p>
-<p>
-Let \( Y = \cup A_n \), and suppose \( Y = C \cup D\) such that \( C, D\) are non-empty, open, and \( C \cap D = \phi \).                         
-Since \( A_1 \) is connected, let \( A_1 \subset C\) as \(A_1 \) is connected. However, \( A_1 \cap A_2 = \phi\)   \( \Rightarrow\) \( A_2 \subset C\), similarly \( A_3 \subset C\), ad infinitum. Therefore \( Y \cup D = \phi\), which is a contradiction. Hence, \( Y \) has no separation, and thus it is connected. 
-</p>
-
-<h2> Problem 6 </h2>
-<p> \(A,C \subset X\),  \( C\cap A \neq \phi, and \quad C \cap (X-A) \neq \phi \) . We need to prove that if C is a connected space, then C intersects Bd A. </p>
-<p>
-Suppose C is connected, and does not intersect Bd A \( \Rightarrow C \cap \overline{A} = \phi, \quad C \cap \overline{(X-A)} = \phi\). Therefore, one can write \( C = (C \cap int(A)) \cup (C \cap int(X-A) )\), where both sets are non-empty, disjoint, and open in C (as int (A) and int (X-A) is open in X) which contradicts that C is connected. Thus, C intersects Bd A. </p>
-
-
-
-<h2> Problem 11 </h2>
-<p> 
-  \( p : X \mapsto Y\) is a quotient map. Suppose that each set \( p^{-1} \{y\}\) is connected, and Y is connected, then X should be connected. Let \( U = p^{-1}\{y\}\), thus each such U is connected. Suppose X is disconnected, therefore \( X = A \cup B\), where both A and B are non-empty disjoint open sets in topology of A.  As U is connected, all such \( p^{-1} \{y\}\) should be contained in either A or B. Thus, A and B are what we call, <b>{saturated sets} </b>, and a quotient map maps saturated sets of X to open sets of Y. Thus, \( Y = p(A) \cup p(B)\), where \( p(A), p(B) \) are open in Y. This is a contradiction as Y is connected, hence X should be connected. 
-</p>
-  
-<p>
-<b>Part A:</b> Let \(\pi\) be the projection of \(G \rightarrow G/H\). Let \(\pi_{\alpha} = \pi \circ f_{\alpha}\) be the map from \(G \rightarrow G/H\) (which is surjective continuous, as it is the composition of surjective continuous functions).
-The inverse image of coset \(xH\) under \(\pi \circ f_{\alpha}\) is the collection of \(\{\alpha^{-1} \cdot x \cdot h \ | \ h \in H\}\). All such collections will give the set \(G/H\). Thus, by Corollary 22.3 (an immediate consequence
-of the universal property of the quotient topology), the induced map from \(G/H\) to \(G/H\) which sends \(xH\) to \((\alpha \cdot x)H\) is a homeomorphism.
-</p>
-
-<p>
-<b>Part B:</b> Given a one-point set \(\{xH\} \in G/H\), note that \(\pi^{-1}(\{xH\}) = xH = f_x(H) \in G\). Since \(H\) is closed and \(f_x\) is a homeomorphism, \(f_X(H)\) must be closed, so \(\{xH\}\) must be closed in \(G/H\).
-</p>
-
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Aum Rawal</p>
-<p class="date">Created: 2024-01-11 Sat 19:12</p>
-</div>
-</body>
-</html>
-
+  Given that \(\tau \supset \tau
