@@ -252,6 +252,198 @@ A path \( \gamma \) between \( x_0 \) and \( x_1 \in X\)can be defined as
 \end{align}
     \( \Rightarrow (f \; o \; id), (f \; o \; c_{x_0}) : X \rightarrow Y  \). Now, as X is contractibe, \( f \; o \; id  \;  \simeq f \; o \; c_{x_0} (= f(x_0)). \) Similarly, for any other map \( g : X \rightarrow Y; i.e., g(x) \simeq g(x_0)\). As Y is path connectd, \( g(x_0) \simeq f(x_0) \implies f(x) \simeq g(x).\) 
 </p>
+
+
+
+<h2> Exercise 52.1</h2>
+
+<p> a) Cone </p>
+<p>b)  A star convex subset of \( \Re^n\) is simply connected, as it is path connected because any two points can be connected through the point \( a_0 \in A\) by the concatenation of two line segments. Moreover, the fundamental group at \( a_0\) is trivial because any loop at that point can be compressed to the constant loop using a straight line homotopy. 
+</p>
+
+<h2>Exercise 52.2</h2>
+
+<p>
+  \begin{align}
+    \gamma =& \alpha * \beta \\ 
+ \gamma [f] =& \bar{\gamma} * f * \gamma \\
+  =& \bar{\beta} * \bar{\alpha} * f * \alpha * \beta \\
+\end{align}
+Similarly, 
+\begin{align}
+    \hat{\beta} \; o \; \hat{\alpha} [f] =& \hat{\beta} \;o\; \bar{\alpha} * f * \alpha \\ 
+    =& \bar{\beta} * \bar{\alpha} * f * \alpha * \beta
+\end{align}
+</p>
+
+<h2>Exercise 52.3</h2>
+
+<p>  Suppose \(f,g\) are two loops at \( x_0\), and \(\pi_1(X,x_0)\)is abelian. We need to prove that \( \hat{\alpha} = \hat{\beta}\), where \( \alpha,\; \beta \) are paths from \( x_0 \) to \( x_1\). We have that </p>
+<p>
+\begin{align}
+    f*g =& g*f \\
+    \Rightarrow \bar{\alpha}* f * g *\alpha =& \bar{\alpha} * g * f * \alpha.
+\end{align}
+</p>
+<p>
+Similarly, </p>
+<p>
+\( \bar{\beta}* f * g * \beta = \bar{\beta} * g * f * \beta\). </p>
+<p>
+Any loop can be decomposed into two paths, therefore we can suppose that \( f = \alpha* \bar{\beta}\), which is a valid loop at \( x_0\). Then upon substituting f in the above equation and using \( \alpha * \bar{\alpha} = e_{x_0}\), we get - 
+\begin{align}
+    \bar{\beta} * g * \alpha &= \bar{\alpha} * g * \alpha * \bar{\beta}* \alpha \\
+    &\text{and} \\ 
+  \bar{\beta} * \alpha * \bar{\beta} * g * \beta &= \bar{\beta} * g * \alpha.
+\end{align}
+</p>
+<p>
+This gives us 
+
+\begin{equation}
+\bar{\alpha} * (g * \alpha * \bar{\beta}) * \alpha = \bar{\beta} *( \alpha * \bar{\beta} * g )* \beta
+\end{equation} </p>
+<p>
+As \( \pi_1(X,x_0)\) is abelian, \( g*(\alpha*\bar{\beta}) = ( \alpha* \bar{\beta})* g\)
+
+\( \Rightarrow \hat{\alpha} = \hat{\beta}\). 
+</p>
+<p>
+For the other implication, we suppose that \( \hat{\alpha} = \hat{\beta}\), and prove that \( \pi_1(X,x_0) \) is abelian. \\
+We follow similar steps, let \(f,g\) be two loops at \(x_0\). Write down expanded version of following equations - 
+\begin{align}
+    \hat{\alpha} o (f * g) = \hat{\beta} o(f*g) \\
+    \hat{\alpha} o  (g*f) = \hat{\beta} o (g*f) \\
+\end{align}
+Again, suppose that \( f = \alpha * \bar{\beta}\), and substitute that in the above equations. This provides us with  
+\begin{equation}
+    \hat{\alpha} o (g * f) = \hat{\beta} o (f * g).
+\end{equation}
+Which implies that \( \pi_1(X,x_0)\) is abelian.
+</p>
+
+<h2> Exercise 52.4</h2>
+
+<p>To prove - 
+\begin{equation}
+    r_* : \pi_1(X,a_0) \to \pi_1(A,a_0)
+\end{equation}
+is surjective. </p>
+<p> 
+Proof - </p>
+<p>
+\( r : X \to A\) is a retraction. If \( \lambda\) is a loop in X, then \( r \; o\; \lambda \) is a loop in A. Suppose, \( \gamma\) is a loop in A at \( a_0\). Now, as \( A \subset X\), \( \gamma\) should be a loop in X as well, therefore \(r_* \) will be an identity in that case \( id : \gamma (\in \pi_1(X,a_0)) \to \gamma (\in \pi_1(A,a_0))\). Thus, every loop at \( a_0\) in A has a corresponding loop at \(a_0\) in X \( \Rightarrow  r_* : \pi_1(X,a_0) \to \pi_1(A,a_0)) \) is surjective.
+
+</p>
+
+<h2>Exercise 52.5</h2>
+<p>
+\( A \subset R^n\) </p>
+<p>
+Suppose \( H \) is the extension of \( h\). </p>
+<p>
+Therefore \( H : (R^n, a_0) \to (Y,y_0)\). As \(R^n\) is contractible, \(\pi_1(R^n, a_0)\) will be trivial, therefore \( H_* : \pi_1(R^n, a_0) \to [e] \in \pi_1(Y,y_0) \). </p>
+<p>
+That is, \( H \; o \; \lambda = c_{y_0},\) for all loops \(\lambda\) of \(R^n\) at \(a_0. \) </p>
+<p>
+Suppose, \( \gamma\) is a loop at \( a_0\) in A, and h maps it to \(\varphi \neq c_{y_0}\), 
+\begin{align}
+    h \; o \; \gamma =& \varphi \\
+    \Rightarrow H |_A \; o \; \gamma =& \varphi.
+\end{align}  </p>
+<p>
+But, H maps all loops of \(R^n\) to \(c_{y_0}\). This contradicts our supposition, and hence \(h_*\) is the trivial homomorphism.   </p>
+
+
+<h2>Exercise 52.6</h2>
+
+<p>We need to prove that \( \hat{\beta} o (h_{x_0})_* = (h_{x_1})_*o \hat{\alpha}\). It is essential in this exercise to keep track of the basepoint of the loops. We first assume that \( [f] \in \pi_1(X,x_0)\), and solve both sides of the equation. </p>
+<p>
+\( (h_{x_1})_*o \hat{\alpha}  \) = \( \hat{\alpha} : \pi_1(X,x_0) \to \pi_1(X,x_1)\) o \( (h_{x_1})_* : \pi_1(X,x_1) \to \pi_1(Y,y_1))\).</p>
+<p>
+\begin{align}
+    \hat{\alpha} (f) =& [\bar{\alpha}] * [f] * [\alpha] \\ 
+    (h_{x_1})_* ( [\bar{\alpha}] * [f] * [\alpha] ) =& [h o (\bar{\alpha} * f * \alpha)] \\
+    =& [ho \bar{\alpha}] * [h o f] * [ho \alpha].
+\end{align}</p>
+<p>
+This makes sense as \( ho \bar{\alpha} (0) = y_1\), \( ho \bar{\alpha} (1) = y_0 \), \(h o f\) is a loop at \( y_0\), \( h o \alpha(0) = y_0\) and \( h o \alpha(1) = y_1 \). </p>
+<p>
+Similarly, solve the other equation, and it will be evident that both equations are the same. </p>
+
+<h2>Exercise 52.7</h2>
+
+<h3>a)</h3>
+<p>
+  \( (f \otimes g) (s) = f(s) . g(s)\), \( f,g \in \Omega(G,x_0)\) ( set of loops at \( x_0\)). \( (f \otimes g) (0) = f(0) . g(0) = x_0 . x_0 = x_0 = (f \otimes g) (1) \). This shows that \( (f \otimes g) (s) \) is again a loop at \( X_0\). Therefore, \( \Omega(G,x_0)\) is a group under \( \otimes\). 
+</p>
+
+<h3> b)</h3>
+
+<p>Let \( [\gamma] \ne [\lambda] \in \pi_1 (G,x_0)\). Suppose, \( \exists \gamma_1, \gamma_2 \in [\gamma], and \lambda_1, \lambda_2 \in [\lambda]\). We need to show that \( [\gamma_1] \otimes [\lambda_1] = [\gamma_2] \otimes [\lambda_2] \); i.e., </p>
+<p>
+\begin{equation}
+    \gamma_1 (s) . \lambda_1(s) \simeq \gamma_2(s) . \lambda_2(s). 
+\end{equation} </p>
+<p>
+The homotopy between these products can be found by taking production of the corresponding homotopies. Let, \( H : I \times I \to G, \text{ such that } H (s,0) = \gamma_1(s), \text{ and } H (s,1) = \gamma_2(s)\) be a continuous function \( H(s,t) = \gamma_t(s)\). Similarly, let \(F\) be the homotopy between \( \lambda_1, \lambda_2 \), \( F(t,s) = \lambda_t(s)\). </p>
+<p>
+Then the homotopy needed is given by \( H(s,t) . F(s,t) = \gamma_t(s) . \lambda_t(s)\). Thus, \( \gamma_1 (s) \cdot \lambda_1(s) \simeq \gamma_2(s) \cdot \lambda_2(s). \)</p>
+
+
+<h3>c)</h3>
+<p>
+To show that \( \otimes \) is the same as \( *\), we first calculate </p>
+<p>
+\begin{align*}
+    (f * e_{x_0}) \otimes ( e_{x_0} * g) 
+    = &f * e_{x_0} (s) \cdot  e_{x_0} * g (s) \\ 
+    =&\begin{cases}
+        f(2s) \cdot e_{x_0}(2s) & \text{if } s \in [0, 1/2] \\
+        e_{x_0}(2s-1) \cdot g(2s-1) & \text{if } s \in [1/2, 1]
+    \end{cases}\\
+    =& f * g
+\end{align*} </p>
+
+<p>
+We know that \( f* e_{x_0} \simeq f\) (property of \( *\)). Thus we get that in \( \pi_1(G,x_0), f \otimes g = f * g\). </p>
+
+
+<h3>
+  d)
+</h3>
+
+<p>We need to prove that \( \pi_1(G,x_0)\) is abelian, i.e., \( \forall [\gamma_1], [\gamma_2]  \in \pi_1(G,x_0), \text{we have } [\gamma_1] \otimes [\gamma_2] = [\gamma_2] \otimes [\gamma_1]\). </p>
+<p>
+Let, \( \gamma_1, \gamma_2\) be the representative of the respective equivalence classes. As discussed in the previous part, \( [\gamma_1] \otimes [\gamma_2] = \gamma_1 * \gamma_2\). Thus, we need to prove that \( \gamma_1 * \gamma_2 \simeq \gamma_2 * \gamma_1\). </p>
+<p>
+\begin{align}
+\gamma_1 * \gamma_2 =& \begin{cases}
+    \gamma_1(2s) & \text{if } s \in [0,1/2] \\
+    \gamma_2(2s-1) & \text{if } s \in [1/2,1]
+\end{cases} \\
+\end{align}
+</p>
+<p>
+\begin{align}
+\gamma_2 * \gamma_1 =& \begin{cases}
+    \gamma_2(2s) & \text{if } s \in [0,1/2] \\
+    \gamma_1(2s-1) & \text{if } s \in [1/2,1]
+\end{cases} \\
+\end{align}
+</p>
+<p>
+A homotopy \( H (t,s)\) between them can be given as - </p>
+<p>
+\begin{align}
+    H(t,s) = \begin{cases}
+        \gamma_1(2s(1-t)) \cdot \gamma_2 (2st) & \text{if } s \in [0,1/2] \\
+        \gamma_2((2s-1)(1-t)) \cdot \gamma_1((2s-1)t) & \text{if } s \in [1/2,1].
+    \end{cases}
+\end{align}</p>
+<p>
+This satisfies the homotpy conditions, and hence \( \gamma_1 * \gamma_2 \simeq \gamma_2 * \gamma_1\). Therefore, \( \pi_1(G,x_0)\) is abelian.</p>
+
 </div>
 </body>
 </html>
