@@ -444,6 +444,36 @@ A homotopy \( H (t,s)\) between them can be given as - </p>
 <p>
 This satisfies the homotpy conditions, and hence \( \gamma_1 * \gamma_2 \simeq \gamma_2 * \gamma_1\). Therefore, \( \pi_1(G,x_0)\) is abelian.</p>
 
+<h2> Exercise 53.1 </h2>
+<p>  Given that Y has a discrete topology, we need to show that projection (on X) \( p : X \times Y \to X\) is a covering map. </p>
+<p>
+Suppose \( x \in X\), and \( x \in U \subset X\). For each open \( U \) we have that 
+\begin{align}
+    p^{-1}(U) = U \times \bigcup_{i \in I}\{y_i\},
+\end{align}
+where I is an index set. Thus \( p^{-1} ( U)\) is a disjoint union of copies of \( U \), and each copy is trivially homeomorphic to \( U\). </p>
+
+</p>
+
+
+<h2> Exercise 53.2</h2>
+
+<p>Suppose \( U \) is connected, and let \( \{V_i\}, \{W_j\}\) be two different slices of \( p^{-1}(U)\). Select an open set \( V\) and \( W\) such that \( V \in \{V_i\}\) and \( W \in \{W_j\}\). Suppose \( V \cap W \neq \phi\), we can write \( V\) as a disjoint union, precisely 
+\begin{equation}
+    V = (V \cap W) \cup (V \textbackslash W).
+\end{equation} </p>
+<p>
+Now, \( p(V) = U\), therefore \( U = p(V \cap W) \cup p (V \textbackslash W).\) \( p\) is a bijection between \( V\) and \( W\). Therefore \( p ( V \cap W ) \cap p (V \textbackslash W) = \phi \). Thus, we have two disjoint sets of U whose union is U. But \( V \cap W \) is an open set, so \( p ( V \cap W)\)is also open, while \( V \textbackslash W\) is a closed set (in topology of V), therefore \( p (V \textbackslash W) \) is closed in U. 
+</p>  
+<p>
+This exercise is unsolved and will be updates soon. 
+Please email me if you have any suggestion.
+</p>
+
+<h2>Exercise 53.3</h2>
+
+Let \( p : E \to B\), B connected, and \( b_0 \in B\) such that \( p^{-1}(b_0) \) has k elements. As p is a covering map, \( p^{-1}(b_0)\) is discrete as if we consider \( \{V_i\}\) to be the slices of the partition of \( p^{-1}(U)\), then \( p^{-1}(b_0) \) intersects each \(V_i\) at exactly one point. Having k elements in \( p^{-1}(b_0)\) implies that the partition of \( p^{-1}(U)\), where U is a neighbourhood of B, has k slices. As B is connected, we have a unique partition, thus all \( b \in U \) has k elements. As \( B\) is connected, there will always be a common point between any two open sets, thus by gluing we can say that \( \forall b \in B\), \( p^{-1}(b)\) has k elements.
+
 </div>
 </body>
 </html>
