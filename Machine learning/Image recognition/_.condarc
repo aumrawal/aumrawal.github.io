@@ -1,0 +1,6 @@
+channels:
+  - defaults
+repodata_threads: 8
+verify_threads: 8
+execute_threads: 8
+default_threads: 8
