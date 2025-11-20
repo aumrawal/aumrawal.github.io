@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stock Price Prediction with LSTM – Apple (AAPL)">
+    <title>📈 Stock Price Prediction with LSTM – Apple (AAPL)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fafafa; color: #333; }
+        header { background: #0D1117; color: white; padding: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 28px; }
+        section { max-width: 900px; margin: auto; padding: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; border-radius: 6px; }
+        h2 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        ul { margin: 10px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: center; }
+        th { background: #f4f4f4; }
+        footer { text-align: center; padding: 15px; font-size: 14px; color: #777; margin-top: 30px; }
+        .note { font-style: italic; font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📈 Stock Price Prediction with LSTM – Apple (AAPL)</h1>
+    <p>Deep Learning-based Time Series Forecasting</p>
+</header>
+
+<section>
+    <h2>Overview</h2>
+    <p>This project demonstrates how to train a <strong>Long Short-Term Memory (LSTM)</strong> model to forecast Apple stock prices using <strong>historical data</strong>. It predicts both <strong>Open</strong> and <strong>Close</strong> prices.</p>
+
+    <h2>1. Data Collection</h2>
+    <ul>
+        <li>Historical AAPL data from <strong>Yahoo Finance</strong>.</li>
+        <li>Period: <em>Jan 1, 2020 – June 20, 2025</em>.</li>
+        <li>Includes: Open, High, Low, Close, Volume.</li>
+    </ul>
+
+    <h2>2. Data Preprocessing</h2>
+    <ul>
+        <li>Selected <em>Close</em> and <em>Open</em> features.</li>
+        <li>Applied <strong>MinMaxScaler</strong> (0–1)</li>
+        <li>Created 100‑day rolling sequences for training.</li>
+        <li>Split into training & validation sets.</li>
+    </ul>
+
+    <h2>3. Model Architecture</h2>
+    <ul>
+        <li>LSTM (50 units, return_sequences=True)</li>
+        <li>Dropout (0.1)</li>
+        <li>LSTM (50 units)</li>
+        <li>Dense (2 outputs: Open & Close)</li>
+        <li>Loss: MSE | Optimizer: Adam</li>
+    </ul>
+
+    <h2>4. Model Training</h2>
+    <ul>
+        <li>100 epochs</li>
+        <li>Validation MAE: <strong>~0.013–0.02</strong> (scaled prices)</li>
+    </ul>
+
+    <h2>5. Predictions Example (August 2025)</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Actual Close</th>
+            <th>Actual Open</th>
+            <th>Predicted Close</th>
+            <th>Predicted Open</th>
+        </tr>
+        <tr>
+            <td>2025-08-04</td><td>0.104991</td><td>0.277556</td><td>0.475210</td><td>0.469491</td>
+        </tr>
+        <tr>
+            <td>2025-08-05</td><td>0.090189</td><td>0.228419</td><td>0.466046</td><td>0.460624</td>
+        </tr>
+        <tr>
+            <td>2025-08-06</td><td>0.445783</td><td>0.327136</td><td>0.483489</td><td>0.477147</td>
+        </tr>
+        <tr>
+            <td>2025-08-07</td><td>0.679174</td><td>0.913679</td><td>0.533340</td><td>0.526305</td>
+        </tr>
+        <tr>
+            <td>2025-08-08</td><td>1.000000</td><td>1.000000</td><td>0.582551</td><td>0.575381</td>
+        </tr>
+    </table>
+    <p class="note">Note: Prices are scaled values between 0 and 1. Predictions follow general trends but are slightly smoothed — typical for LSTMs.</p>
+
+    <h2>Key Takeaways</h2>
+    <ul>
+        <li>LSTMs work well for capturing time-dependent stock movements.</li>
+        <li>Proper scaling & sequence preparation are crucial.</li>
+        <li>Further improvements: Add features, tune hyperparameters, inverse-scale predictions.</li>
+        <li> Comparison between two models with different model parameters. </li>
+        <h2> Accuracy of a 50 sequence model</h2>>
+        <img src="50_seq.png" alt="50 sample sequence" style="width:700px">
+        <h2>Accuracy of a 100 sequence model</h2>
+        <img src="100_seq2.png" alt="100 sample sequence" style="width:700px">
+    </ul>
+    <p> This graph clearly shows the increase in accuracy in a model which trains on 100 (instead of 50) data points in each instance.  </p>
+    <h2>Conclusion</h2>
+    <p>This project provides a complete deep learning pipeline for AAPL stock forecasting with LSTM. While not a guaranteed trading tool, it’s an excellent base for time series prediction research.</p>
+</section>
+
+<footer>
+    &copy; 2025 Stock Price Forecasting Project. Powered by TensorFlow/Keras.
+</footer>
+
+</body>
+</html>
