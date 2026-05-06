@@ -247,17 +247,6 @@
   }
   .proj a.cover{ position:absolute; inset:0; }
 
-  .project-toolbar{
-    display:flex; gap: 10px; align-items:center; margin-bottom: 22px;
-  }
-  .filter-btn{
-    padding: 6px 12px; border-radius: 999px; font-size: 12px;
-    border: 1px solid var(--line); background: transparent; color: var(--muted);
-    cursor: pointer; transition: all .15s;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .filter-btn.active{ background: var(--grad); color:#0b0b14; border-color: transparent; }
-
   /* services / available for */
   .services{
     display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
@@ -302,15 +291,6 @@
   }
   footer .row{ display:flex; justify-content:space-between; gap: 14px; flex-wrap: wrap; }
   footer a:hover{ color: var(--accent); }
-
-  /* skeleton loader */
-  .skeleton{
-    height: 220px; border-radius: var(--radius);
-    background: linear-gradient(90deg, var(--panel) 0%, #1a1a26 50%, var(--panel) 100%);
-    background-size: 200% 100%; animation: shimmer 1.4s infinite;
-    border:1px solid var(--line);
-  }
-  @keyframes shimmer{ to { background-position: -200% 0; } }
 
   .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in{ opacity: 1; transform: none; }
@@ -400,11 +380,16 @@
     <div class="about-grid">
       <div class="prose">
         <p>
-          My academic training is in <strong>mathematical physics</strong>, with a focus on the geometry of
-          gravitating systems &mdash; Killing horizons, conformal structures, and the deep role of <em>gauge symmetry</em>
-          in defining what physical degrees of freedom even <em>are</em>. I&rsquo;m especially drawn to the boundary where
-          general relativity meets <em>algebraic topology</em>: characteristic classes, fibre bundles, and how the
-          global topology of spacetime constrains what local physics is allowed to look like.
+          My academic training is in <strong>mathematical physics</strong> &mdash; an MSc from the
+          <strong>University of Edinburgh</strong> (2024), preceded by a BSc in Physics at the
+          University of Debrecen on a Stipendium Hungaricum scholarship. My focus is the geometry of
+          gravitating systems &mdash; Killing horizons, conformal structures, and the deep role of
+          <em>gauge symmetry</em> in defining what physical degrees of freedom even <em>are</em>.
+          My MSc dissertation was on the Penrose &amp; Hawking-Penrose singularity theorems &mdash;
+          how global topology forces black-hole and big-bang singularities. I&rsquo;m especially
+          drawn to the boundary where general relativity meets <em>algebraic topology</em>:
+          characteristic classes, fibre bundles, and how spacetime topology constrains the local
+          physics allowed on it.
         </p>
         <p>
           Outside the seminar room, I build models. The same fibre-bundle thinking that organises a
@@ -425,11 +410,13 @@
       </div>
 
       <aside class="card stack" aria-label="At a glance">
-        <div class="kv"><span class="k">Background</span><span class="v">M.Sc. Mathematical Physics</span></div>
-        <div class="kv"><span class="k">Research</span><span class="v">Black holes · Gauge theory</span></div>
-        <div class="kv"><span class="k">Tooling</span><span class="v">PyTorch · JAX · GUDHI · PyG</span></div>
+        <div class="kv"><span class="k">Education</span><span class="v">MSc Math Physics, Edinburgh &rsquo;24</span></div>
+        <div class="kv"><span class="k">Research</span><span class="v">Black holes &middot; Gauge theory &middot; GDL &middot; TDA</span></div>
+        <div class="kv"><span class="k">Tooling</span><span class="v">PyTorch &middot; PyTorch Geometric &middot; Ripser</span></div>
         <div class="kv"><span class="k">Status</span><span class="v" style="color:var(--accent-2)">Open to collaborate</span></div>
-        <div class="kv"><span class="k">Based</span><span class="v">Remote · Worldwide</span></div>
+        <div class="kv"><span class="k">Based</span><span class="v">Remote &middot; Worldwide</span></div>
+        <div class="kv"><span class="k">Email</span><span class="v"><a href="mailto:aumrawal24@gmail.com" style="color:var(--accent)">aumrawal24@gmail.com</a></span></div>
+        <div class="kv"><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/aum-rawal29/" target="_blank" rel="noopener" style="color:var(--accent)">/in/aum-rawal29</a></span></div>
         <div class="tags" aria-label="Topic tags">
           <span class="tag accent">Geometric DL</span>
           <span class="tag accent">Topological DA</span>
@@ -439,7 +426,7 @@
           <span class="tag">Equivariant NNs</span>
           <span class="tag">Persistent homology</span>
           <span class="tag">PyTorch</span>
-          <span class="tag">JAX</span>
+          <span class="tag">Ripser</span>
         </div>
       </aside>
     </div>
@@ -485,11 +472,11 @@
   <div class="container">
     <div class="section-head">
       <h2><span class="num">03</span>Selected projects</h2>
-      <p class="section-sub">Featured work first; the full list pulls live from <a href="https://github.com/aumrawal" style="color:var(--accent)">github.com/aumrawal</a> and updates itself.</p>
+      <p class="section-sub">Two flagship pieces of work that pair the math with running code. More projects on <a href="https://github.com/aumrawal" target="_blank" rel="noopener" style="color:var(--accent)">github.com/aumrawal</a>.</p>
     </div>
 
-    <!-- Featured (hardcoded so this always renders even if API rate-limits) -->
-    <div class="grid" id="featured-grid">
+    <!-- Featured projects -->
+    <div class="grid" id="featured-grid" style="grid-template-columns: repeat(2, minmax(280px, 1fr)); max-width: 820px; margin: 0 auto;">
       <article class="proj featured">
         <a class="cover" href="https://github.com/aumrawal/GDL_Cars" target="_blank" rel="noopener" aria-label="GDL_Cars on GitHub"></a>
         <h3><span class="star">&#9733;</span> GDL_Cars</h3>
@@ -502,30 +489,7 @@
         <p class="desc">Persistent-homology probes of neural-network latent spaces &mdash; using topological invariants to characterise how representations organise themselves.</p>
         <div class="meta"><span class="lang">Python</span><span>Topological Data Analysis</span></div>
       </article>
-      <article class="proj featured">
-        <a class="cover" href="https://github.com/aumrawal/ML-Figure-Recognition" target="_blank" rel="noopener" aria-label="ML Figure Recognition on GitHub"></a>
-        <h3><span class="star">&#9733;</span> ML Figure Recognition</h3>
-        <p class="desc">Computer-vision pipeline for recognising and classifying figures in scientific documents &mdash; classical ML + modern vision backbones.</p>
-        <div class="meta"><span class="lang">Python</span><span>Computer Vision</span></div>
-      </article>
     </div>
-
-    <div class="section-head" style="margin-top:48px">
-      <h2 style="font-size: clamp(20px, 2.4vw, 26px); margin:0;"><span class="num">·</span>More from GitHub</h2>
-      <div class="project-toolbar" role="toolbar" aria-label="Filter projects">
-        <button class="filter-btn active" data-filter="all">all</button>
-        <button class="filter-btn" data-filter="ml">ml</button>
-        <button class="filter-btn" data-filter="physics">physics</button>
-        <button class="filter-btn" data-filter="other">other</button>
-      </div>
-    </div>
-
-    <div class="grid" id="repo-grid" aria-live="polite">
-      <div class="skeleton"></div>
-      <div class="skeleton"></div>
-      <div class="skeleton"></div>
-    </div>
-    <p id="repo-msg" style="color:var(--dim); font-size: 13px; margin-top: 16px;"></p>
   </div>
 </section>
 
@@ -570,21 +534,21 @@
         <p>Open to GDL / TDA contract work, research collaborations, and interesting problems at the math&ndash;ML boundary.</p>
         <div class="cta-row" style="margin-top: 18px;">
           <a class="btn primary" href="mailto:aumrawal24@gmail.com">Email me <span class="arrow">&rarr;</span></a>
-          <a class="btn" id="cv" href="cv.pdf" download>Download CV</a>
+          <a class="btn" id="cv" href="Aum_academic%20CV.pdf" download="Aum_Rawal_CV.pdf">Download CV</a>
         </div>
       </div>
       <div class="socials" aria-label="Social links">
         <a class="icon-btn" href="https://github.com/aumrawal" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.68.8.56C20.21 21.42 23.5 17.1 23.5 12.02 23.5 5.66 18.35.5 12 .5Z"/></svg>
         </a>
-        <a class="icon-btn" href="https://scholar.google.com/citations?user=" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 1 7l11 6 9-4.91V17h2V7L12 1Zm0 11.4-6-3.27V11l6 3.27 6-3.27v-1.87Z"/><path d="M5 13.18v3.34c0 1.78 3.13 3.48 7 3.48s7-1.7 7-3.48v-3.34l-7 3.82-7-3.82Z"/></svg>
-        </a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/aumrawal" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <a class="icon-btn" href="https://www.linkedin.com/in/aum-rawal29/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9.5h4V21H3V9.5ZM9 9.5h3.8v1.57h.05c.53-1 1.83-2.07 3.78-2.07 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.07c0-1.21-.02-2.77-1.69-2.77-1.69 0-1.95 1.32-1.95 2.68V21H9V9.5Z"/></svg>
         </a>
-        <a class="icon-btn" href="https://x.com/aumrawal" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.844l-4.78-6.26L4.8 22H2.044l6.97-7.96L2 2h6.97l4.32 5.71L18.244 2Zm-1.2 18h1.49L7.03 4H5.45l11.594 16Z"/></svg>
+        <a class="icon-btn" href="https://doi.org/10.22214/ijraset.2022.47051" target="_blank" rel="noopener" aria-label="Publication: Oblate Distorted Harmonic Oscillator Symmetry" title="Publication (DOI)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14H6.5A2.5 2.5 0 0 0 4 19.5Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H19"/><path d="M9 7h6"/><path d="M9 11h6"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:aumrawal24@gmail.com" aria-label="Email" title="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         </a>
       </div>
     </div>
@@ -629,78 +593,6 @@
     }
   }, { threshold: .12 });
   document.querySelectorAll('section, .proj, .svc').forEach(el => { el.classList.add('reveal'); io.observe(el); });
-
-  // ----- live GitHub repo grid -----
-  const FEATURED = new Set(['GDL_Cars','TDA-Neural-Network-Latent-Space','ML-Figure-Recognition']);
-
-  function classify(repo){
-    const blob = ((repo.name || '') + ' ' + (repo.description || '') + ' ' + (repo.topics || []).join(' ')).toLowerCase();
-    if(/(gdl|tda|topolog|persisten|gnn|geometric|equivariant|neural|ml|machine|learning|cnn|transformer|deep|tensor|pytorch|jax)/.test(blob)) return 'ml';
-    if(/(physics|relativ|black|hole|gauge|gravity|cosmolog|quantum|spinor|manifold|tensor)/.test(blob)) return 'physics';
-    return 'other';
-  }
-  function fmtDate(s){ try{ return new Date(s).toLocaleDateString(undefined,{year:'numeric',month:'short'}); }catch(e){ return ''; } }
-  function escapeHTML(s){ return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-  let ALL = [];
-
-  function render(filter){
-    const grid = document.getElementById('repo-grid');
-    grid.innerHTML = '';
-    const list = ALL
-      .filter(r => !r.fork && !r.archived)
-      .filter(r => !FEATURED.has(r.name))
-      .filter(r => filter === 'all' ? true : classify(r) === filter)
-      .sort((a,b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-
-    if(list.length === 0){
-      grid.innerHTML = '<p style="color:var(--muted); grid-column: 1 / -1;">Nothing here yet for this filter.</p>';
-      return;
-    }
-    for(const repo of list){
-      const lang = repo.language || '—';
-      const desc = repo.description || 'No description provided.';
-      const card = document.createElement('article');
-      card.className = 'proj';
-      card.innerHTML = `
-        <a class="cover" href="${repo.html_url}" target="_blank" rel="noopener" aria-label="${escapeHTML(repo.name)} on GitHub"></a>
-        <h3>${escapeHTML(repo.name)}</h3>
-        <p class="desc">${escapeHTML(desc)}</p>
-        <div class="meta">
-          <span class="lang">${escapeHTML(lang)}</span>
-          <span>&#9733; ${repo.stargazers_count || 0}</span>
-          <span>&middot;</span>
-          <span>updated ${fmtDate(repo.pushed_at)}</span>
-        </div>
-      `;
-      grid.appendChild(card);
-    }
-  }
-
-  async function loadRepos(){
-    const msg = document.getElementById('repo-msg');
-    try{
-      const res = await fetch('https://api.github.com/users/aumrawal/repos?per_page=100&sort=pushed');
-      if(!res.ok) throw new Error('GitHub API ' + res.status);
-      ALL = await res.json();
-      render('all');
-      msg.textContent = `Showing ${ALL.filter(r=>!r.fork && !r.archived && !FEATURED.has(r.name)).length} non-featured repositories — list pulled live from GitHub.`;
-    }catch(err){
-      document.getElementById('repo-grid').innerHTML =
-        '<p style="color:var(--muted); grid-column: 1 / -1;">Couldn\'t load the live repo list right now. Browse them all on <a href="https://github.com/aumrawal" style="color:var(--accent)">github.com/aumrawal</a>.</p>';
-      msg.textContent = '';
-    }
-  }
-  loadRepos();
-
-  // filter buttons
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      render(b.dataset.filter);
-    });
-  });
 </script>
 </body>
 </html>
