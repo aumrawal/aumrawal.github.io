@@ -1,161 +1,706 @@
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Website</title>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
-</script>
-<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aum Rawal — Mathematical Physicist · ML Architect</title>
+<meta name="description" content="Mathematical physicist working on black holes, gauge theory, and algebraic topology — and applying that machinery to Geometric Deep Learning (GDL) and Topological Data Analysis (TDA). Available for contract and research collaboration." />
+<meta name="author" content="Aum Rawal" />
+<meta property="og:title" content="Aum Rawal — Mathematical Physicist · ML Architect" />
+<meta property="og:description" content="Black holes, gauge theory, algebraic topology → Geometric Deep Learning & Topological Data Analysis." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+<style>
+  :root{
+    --bg: #07070b;
+    --bg-soft: #0d0d14;
+    --panel: #11111a;
+    --panel-2: #161622;
+    --line: #22222e;
+    --text: #ebeaf2;
+    --muted: #8b8aa0;
+    --dim: #5a5970;
+    --accent: #a78bfa;          /* violet */
+    --accent-2: #22d3ee;        /* cyan */
+    --accent-3: #f472b6;        /* magenta */
+    --grad: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+    --grad-soft: linear-gradient(120deg, rgba(167,139,250,.18), rgba(34,211,238,.18));
+    --radius: 14px;
+    --maxw: 1140px;
+  }
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: rgba(167,139,250,.35); color: #fff; }
+
+  /* ambient backdrop */
+  .bg-stage{
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(167,139,250,.18), transparent 60%),
+      radial-gradient(900px 600px at -10% 30%, rgba(34,211,238,.12), transparent 60%),
+      radial-gradient(700px 700px at 50% 110%, rgba(244,114,182,.10), transparent 55%);
+  }
+  .bg-grid{
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity:.5;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 75%);
+  }
+
+  .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+
+  /* nav */
+  nav.top{
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(7,7,11,.55);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:.2px;
+  }
+  .brand .mark{
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--grad);
+    display:grid; place-items:center; color:#0b0b14; font-weight:800; font-family:'JetBrains Mono',monospace;
+    box-shadow: 0 0 24px rgba(167,139,250,.35);
+  }
+  nav.top ul{
+    display:flex; gap:6px; list-style:none; padding:0; margin:0;
+  }
+  nav.top ul a{
+    padding: 8px 12px; border-radius: 999px; color: var(--muted);
+    font-size: 14px; transition: color .2s, background .2s;
+  }
+  nav.top ul a:hover{ color: var(--text); background: rgba(255,255,255,.04); }
+  nav.top .cta{
+    padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight:600;
+    background: var(--grad); color: #0b0b14;
+    box-shadow: 0 6px 24px rgba(167,139,250,.25);
+  }
+  @media (max-width: 720px){ nav.top ul{ display:none; } }
+
+  /* hero */
+  header.hero{ padding: 96px 0 64px; position: relative; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--grad-soft);
+    border: 1px solid rgba(167,139,250,.25);
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: #d6d3ec;
+  }
+  .eyebrow .dot{
+    width: 6px; height: 6px; border-radius: 999px; background: var(--accent-2);
+    box-shadow: 0 0 12px var(--accent-2);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
+
+  h1.display{
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(40px, 7vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 22px 0 18px;
+  }
+  h1.display .grad{
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lede{
+    color: var(--muted);
+    font-size: clamp(16px, 1.6vw, 19px);
+    max-width: 720px;
+  }
+  .lede strong{ color: var(--text); font-weight:600; }
+
+  .cta-row{ display:flex; gap:12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 18px; border-radius: 12px; font-weight:600; font-size: 14px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--text);
+    transition: transform .15s, border-color .2s, background .2s;
+  }
+  .btn:hover{ transform: translateY(-1px); border-color: rgba(167,139,250,.45); }
+  .btn.primary{
+    background: var(--grad); color:#0b0b14; border-color: transparent;
+    box-shadow: 0 10px 30px rgba(167,139,250,.25);
+  }
+  .btn .arrow{ transition: transform .15s; }
+  .btn:hover .arrow{ transform: translateX(3px); }
+
+  /* hero visual: rotating torus knot */
+  .hero-art{
+    position: absolute; right: -40px; top: 60px; width: 460px; height: 460px;
+    pointer-events: none; opacity: .9;
+    filter: drop-shadow(0 30px 60px rgba(167,139,250,.25));
+  }
+  .hero-art svg{ width: 100%; height: 100%; animation: spin 60s linear infinite; }
+  @keyframes spin{ to { transform: rotate(360deg); } }
+  @media (max-width: 980px){ .hero-art{ display:none; } }
+
+  /* sections */
+  section{ padding: 72px 0; position: relative; }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap: 16px; margin-bottom: 28px; flex-wrap:wrap; }
+  .section-head h2{
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-head h2 .num{
+    font-family: 'JetBrains Mono', monospace; color: var(--accent);
+    font-size: .55em; vertical-align: 12%; margin-right: 10px; letter-spacing:.05em;
+  }
+  .section-sub{ color: var(--muted); max-width: 640px; }
+
+  /* about */
+  .about-grid{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: 36px;
+  }
+  @media (max-width: 880px){ .about-grid{ grid-template-columns: 1fr; } }
+  .prose p{ color: #c9c8d8; }
+  .prose p + p{ margin-top: 14px; }
+  .prose .eq{ display:block; margin: 14px 0; color: var(--text); font-size: 1.05em; }
+
+  .card{
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .stack{ display:flex; flex-direction:column; gap: 14px; }
+  .kv{ display:flex; justify-content:space-between; gap:14px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .kv:last-child{ border-bottom:none; }
+  .kv .k{ color: var(--muted); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; }
+  .kv .v{ color: var(--text); text-align:right; }
+
+  /* tag chips */
+  .tags{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 14px; }
+  .tag{
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 6px 10px; border-radius: 999px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--line); color: #cfceda;
+  }
+  .tag.accent{ border-color: rgba(167,139,250,.35); color: #ddd5ff; background: rgba(167,139,250,.08); }
+
+  /* projects */
+  .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
+  .proj{
+    position:relative; overflow:hidden;
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    display:flex; flex-direction:column; min-height: 220px;
+  }
+  .proj:hover{ transform: translateY(-3px); border-color: rgba(167,139,250,.45); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+  .proj.featured::before{
+    content:""; position:absolute; inset: -1px; border-radius: inherit; padding:1px;
+    background: var(--grad);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events:none;
+  }
+  .proj h3{
+    margin: 0 0 8px; font-size: 18px; font-weight: 600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .proj h3 .star{ color: var(--accent-2); font-size: 14px; }
+  .proj p.desc{ color: var(--muted); font-size: 14px; flex: 1; margin: 0 0 14px; }
+  .proj .meta{ display:flex; gap: 14px; align-items:center; font-size: 12px; color: var(--dim); margin-top: auto; }
+  .proj .meta .lang::before{
+    content: ""; display:inline-block; width:8px; height:8px; border-radius:999px;
+    background: var(--accent); margin-right: 6px; vertical-align: 1px;
+  }
+  .proj a.cover{ position:absolute; inset:0; }
+
+  .project-toolbar{
+    display:flex; gap: 10px; align-items:center; margin-bottom: 22px;
+  }
+  .filter-btn{
+    padding: 6px 12px; border-radius: 999px; font-size: 12px;
+    border: 1px solid var(--line); background: transparent; color: var(--muted);
+    cursor: pointer; transition: all .15s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .filter-btn.active{ background: var(--grad); color:#0b0b14; border-color: transparent; }
+
+  /* services / available for */
+  .services{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  @media (max-width: 880px){ .services{ grid-template-columns: 1fr; } }
+  .svc{ padding: 22px; border:1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+  .svc .icon{
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--grad-soft);
+    display:grid; place-items:center; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .svc h4{ margin: 0 0 6px; font-size: 16px; }
+  .svc p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* contact */
+  .contact{
+    display:grid; grid-template-columns: 1fr auto; gap: 28px; align-items:center;
+    padding: 36px;
+    border-radius: 20px;
+    background:
+      radial-gradient(800px 200px at 0% 0%, rgba(167,139,250,.18), transparent 60%),
+      radial-gradient(600px 200px at 100% 100%, rgba(34,211,238,.14), transparent 60%),
+      var(--panel);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 720px){ .contact{ grid-template-columns: 1fr; } }
+  .contact h2{ margin:0 0 8px; font-family:'Fraunces',serif; font-size: clamp(24px, 3vw, 32px); }
+  .contact p{ margin:0; color: var(--muted); }
+  .socials{ display:flex; gap:10px; flex-wrap:wrap; }
+  .icon-btn{
+    width: 42px; height: 42px; border-radius: 12px; display:grid; place-items:center;
+    background: var(--panel-2); border: 1px solid var(--line); color: var(--text);
+    transition: transform .15s, border-color .2s, color .2s;
+  }
+  .icon-btn:hover{ transform: translateY(-2px); border-color: rgba(167,139,250,.5); color: var(--accent); }
+
+  /* footer */
+  footer{
+    padding: 36px 0; border-top: 1px solid var(--line); margin-top: 48px;
+    color: var(--dim); font-size: 13px;
+  }
+  footer .row{ display:flex; justify-content:space-between; gap: 14px; flex-wrap: wrap; }
+  footer a:hover{ color: var(--accent); }
+
+  /* skeleton loader */
+  .skeleton{
+    height: 220px; border-radius: var(--radius);
+    background: linear-gradient(90deg, var(--panel) 0%, #1a1a26 50%, var(--panel) 100%);
+    background-size: 200% 100%; animation: shimmer 1.4s infinite;
+    border:1px solid var(--line);
+  }
+  @keyframes shimmer{ to { background-position: -200% 0; } }
+
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity: 1; transform: none; }
+</style>
 </head>
+<body>
+<div class="bg-stage"></div>
+<div class="bg-grid"></div>
 
-<body style="max-width:100ch">
-  <header>
-    <center>
-    <h2>Aum Rawal's Home Page</h2>
-    </center>
-  </header>
-  <h3>About</h3>
-  <p>I am (as of Spring 2025) a  pure mathematics student at the University of Toronto. 
-    Right now, I'm working at <a href="https://www.xanadu.ai/">Xanadu</a>, a quantum computing company located in Toronto, on fault-tolerant quantum algorithm research.
+<nav class="top">
+  <div class="container row">
+    <a class="brand" href="#top" aria-label="Aum Rawal">
+      <span class="mark">A</span>
+      <span>Aum Rawal</span>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Work&nbsp;with&nbsp;me</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="cta" href="mailto:aumrawal24@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span>Available for contract & research collaboration</span>
+    <h1 class="display">
+      Mathematical physicist applying<br/>
+      <span class="grad">gauge theory & topology</span><br/>
+      to modern machine learning.
+    </h1>
+    <p class="lede">
+      I&rsquo;m <strong>Aum Rawal</strong> &mdash; a mathematical physicist (M.Sc.) whose research orbits
+      <strong>black holes</strong>, gauge field theory, and algebraic topology.
+      I now build the same machinery into <strong>Geometric Deep Learning</strong> and
+      <strong>Topological Data Analysis</strong>, helping teams design models that respect the
+      symmetry, curvature, and shape of their data.
     </p>
-    <p>
-      Before this, I worked at the Massachusetts Institute of Technology on the theory of quantum algorithmic primitives, under the supervision of
-      <a href="https://scholar.google.com/citations?user=QKyb_9oAAAAJ&hl=en" style="color:red;"> Professor Isaac Chuang</a>, and before that 
-      I was the first non-founding employee (although admittedly a less important one than subsequent hardware-genius hires) at <a href="https://extropic.ai">Extropic</a> (I took a gap year from 2022-2023 to do this).
-    </p>
-
-    <p>Outside of my primary job/education, I do research with <a href="https://scholar.google.ca/citations?user=DSgKHOQAAAAJ&hl=en">Professor Nathan Wiebe</a> on quantum algorithms.
-        My mathematical interests are mostly geometric and topological in flavour. Right now, I am particularly interested in Hamiltonian systems, Lie algebroids, and K-theory.
-         I also like to think about the synthesis of pure mathematics with fault-tolerant quantum algorithms and quantum simulation, as well as <a href="https://scholar.google.com/citations?user=PRjgI8kAAAAJ&hl=en">complexity</a>.
-    </p>
-
-    <h4 style="margin-top:40px;">I sometimes write stuff online</h4>
-    <p>This is my "knowledge repository": <a href="https://thecoherentstate.github.io">The Coherent State</a>. I actually have a lot of content on this site, but it's not 
-      very accessible via the home page. Hopefully I fix this soon!</p>
-    <p>Read my book reviews (or else): <a href="https://www.instagram.com/blacklodgebookreviews/">Black Lodge Book Reviews</a></p>
-    <p><a href="https://github.com/Lucaman99">Github</a> | <a href="https://stackexchange.com/users/14606850/jack-ceroni">Stack Exchange</a> | <a href="https://en.wikipedia.org/wiki/User:JackCer9">Wikipedia</a> | <a href="https://scholar.google.com/citations?user=I9NmuAsAAAAJ&hl=en">Google Scholar</a></p>
-    <p>Send me an email: <a href="MAILTO:jackceroni@gmail.com">jackceroni@gmail.com</a>
-    </p>
-
-    <br>
-
-    <center> 
-        <i>Some inspiration. Taken during trips to Italy, England, Greece. A reminder to create beautiful things.</i>
-        </center>
-        <br>
-        <div class="row" style="display:flex;padding-bottom:10px;">
-        <img src="./assets/duomo.JPG" style="height:500px;">
-        <img src="./assets/england.jpg" style="height:500px;padding-left:10px;">
+    <div class="cta-row">
+      <a class="btn primary" href="#work">Hire me for contract work <span class="arrow">&rarr;</span></a>
+      <a class="btn" href="#projects">See projects</a>
+      <a class="btn" href="#cv">Download CV</a>
     </div>
-        <img src="./assets/athens.jpeg">
-        </body>
 
-</html>
-<style>
-  body {
-    background-color: black;
-    color:white;
+    <div class="hero-art" aria-hidden="true">
+      <!-- torus knot SVG, math-y accent -->
+      <svg viewBox="-220 -220 440 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#a78bfa"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+          <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle r="190" fill="url(#g2)"/>
+        <!-- torus rings -->
+        <g fill="none" stroke="url(#g1)" stroke-width="1.2" opacity="0.85">
+          <ellipse cx="0" cy="0" rx="180" ry="60"/>
+          <ellipse cx="0" cy="0" rx="170" ry="56" transform="rotate(20)"/>
+          <ellipse cx="0" cy="0" rx="160" ry="52" transform="rotate(40)"/>
+          <ellipse cx="0" cy="0" rx="150" ry="48" transform="rotate(60)"/>
+          <ellipse cx="0" cy="0" rx="140" ry="44" transform="rotate(80)"/>
+          <ellipse cx="0" cy="0" rx="130" ry="40" transform="rotate(100)"/>
+          <ellipse cx="0" cy="0" rx="120" ry="36" transform="rotate(120)"/>
+          <ellipse cx="0" cy="0" rx="110" ry="32" transform="rotate(140)"/>
+          <ellipse cx="0" cy="0" rx="100" ry="28" transform="rotate(160)"/>
+        </g>
+        <!-- (3,2) torus knot trace -->
+        <path d="" id="knotPath" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.85"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2><span class="num">01</span>About</h2>
+      <p class="section-sub">From Schwarzschild horizons to persistence diagrams — the same geometric language, different domains.</p>
+    </div>
+    <div class="about-grid">
+      <div class="prose">
+        <p>
+          My academic training is in <strong>mathematical physics</strong>, with a focus on the geometry of
+          gravitating systems &mdash; Killing horizons, conformal structures, and the deep role of <em>gauge symmetry</em>
+          in defining what physical degrees of freedom even <em>are</em>. I&rsquo;m especially drawn to the boundary where
+          general relativity meets <em>algebraic topology</em>: characteristic classes, fibre bundles, and how the
+          global topology of spacetime constrains what local physics is allowed to look like.
+        </p>
+        <p>
+          Outside the seminar room, I build models. The same fibre-bundle thinking that organises a
+          Yang-Mills theory turns out to be exactly the right lens for <strong>Geometric Deep Learning</strong>:
+          equivariant networks, message passing on graphs, and gauge-equivariant CNNs on manifolds. And the
+          algebraic-topology toolkit &mdash; homology, persistent homology, the Mapper algorithm &mdash; shows up
+          again as <strong>Topological Data Analysis</strong>, where it makes sense of the shape of high-dimensional
+          point clouds and neural-network latent spaces.
+        </p>
+        <p>
+          I&rsquo;m currently <strong>open to contract and research-collaboration work</strong> as an ML architect on
+          GDL- and TDA-flavoured problems &mdash; from prototyping to production architecture.
+        </p>
+        <div class="eq" id="eq-einstein">
+          <!-- KaTeX -->
+          \( R_{\mu\nu} - \tfrac{1}{2}\, g_{\mu\nu} R + \Lambda g_{\mu\nu} \;=\; \tfrac{8\pi G}{c^4}\, T_{\mu\nu} \)
+        </div>
+      </div>
+
+      <aside class="card stack" aria-label="At a glance">
+        <div class="kv"><span class="k">Background</span><span class="v">M.Sc. Mathematical Physics</span></div>
+        <div class="kv"><span class="k">Research</span><span class="v">Black holes · Gauge theory</span></div>
+        <div class="kv"><span class="k">Tooling</span><span class="v">PyTorch · JAX · GUDHI · PyG</span></div>
+        <div class="kv"><span class="k">Status</span><span class="v" style="color:var(--accent-2)">Open to collaborate</span></div>
+        <div class="kv"><span class="k">Based</span><span class="v">Remote · Worldwide</span></div>
+        <div class="tags" aria-label="Topic tags">
+          <span class="tag accent">Geometric DL</span>
+          <span class="tag accent">Topological DA</span>
+          <span class="tag">Gauge theory</span>
+          <span class="tag">Algebraic topology</span>
+          <span class="tag">General relativity</span>
+          <span class="tag">Equivariant NNs</span>
+          <span class="tag">Persistent homology</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">JAX</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="container">
+    <div class="section-head">
+      <h2><span class="num">02</span>Research focus</h2>
+      <p class="section-sub">Three threads I keep weaving back together.</p>
+    </div>
+    <div class="grid">
+      <article class="proj">
+        <h3>Black-hole geometry</h3>
+        <p class="desc">
+          Killing horizons, near-horizon symmetry algebras, and the role of the conformal boundary &mdash;
+          how gauge structure organises the physical state space in gravitating systems.
+        </p>
+        <div class="meta"><span>General Relativity</span><span>·</span><span>Differential geometry</span></div>
+      </article>
+      <article class="proj">
+        <h3>Gauge theory &amp; bundles</h3>
+        <p class="desc">
+          Connections, curvature, and characteristic classes. The same <em>principal bundle</em>
+          language sits behind Yang-Mills physics and gauge-equivariant deep learning on manifolds.
+        </p>
+        <div class="meta"><span>Yang-Mills</span><span>·</span><span>Equivariant ML</span></div>
+      </article>
+      <article class="proj">
+        <h3>Topology in data &amp; ML</h3>
+        <p class="desc">
+          Persistent homology, Mapper, and TDA-driven analysis of neural-network latent spaces &mdash;
+          looking at <em>shape</em> as a robust feature of representations and decision boundaries.
+        </p>
+        <div class="meta"><span>TDA</span><span>·</span><span>Latent-space analysis</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <h2><span class="num">03</span>Selected projects</h2>
+      <p class="section-sub">Featured work first; the full list pulls live from <a href="https://github.com/aumrawal" style="color:var(--accent)">github.com/aumrawal</a> and updates itself.</p>
+    </div>
+
+    <!-- Featured (hardcoded so this always renders even if API rate-limits) -->
+    <div class="grid" id="featured-grid">
+      <article class="proj featured">
+        <a class="cover" href="https://github.com/aumrawal/GDL_Cars" target="_blank" rel="noopener" aria-label="GDL_Cars on GitHub"></a>
+        <h3><span class="star">&#9733;</span> GDL_Cars</h3>
+        <p class="desc">Geometric Deep Learning applied to car-trajectory / driving-scene data &mdash; equivariant message passing on graph-structured agents.</p>
+        <div class="meta"><span class="lang">Python</span><span>Geometric Deep Learning</span></div>
+      </article>
+      <article class="proj featured">
+        <a class="cover" href="https://github.com/aumrawal/TDA-Neural-Network-Latent-Space" target="_blank" rel="noopener" aria-label="TDA Neural-Network Latent Space on GitHub"></a>
+        <h3><span class="star">&#9733;</span> TDA &mdash; NN Latent Space</h3>
+        <p class="desc">Persistent-homology probes of neural-network latent spaces &mdash; using topological invariants to characterise how representations organise themselves.</p>
+        <div class="meta"><span class="lang">Python</span><span>Topological Data Analysis</span></div>
+      </article>
+      <article class="proj featured">
+        <a class="cover" href="https://github.com/aumrawal/ML-Figure-Recognition" target="_blank" rel="noopener" aria-label="ML Figure Recognition on GitHub"></a>
+        <h3><span class="star">&#9733;</span> ML Figure Recognition</h3>
+        <p class="desc">Computer-vision pipeline for recognising and classifying figures in scientific documents &mdash; classical ML + modern vision backbones.</p>
+        <div class="meta"><span class="lang">Python</span><span>Computer Vision</span></div>
+      </article>
+    </div>
+
+    <div class="section-head" style="margin-top:48px">
+      <h2 style="font-size: clamp(20px, 2.4vw, 26px); margin:0;"><span class="num">·</span>More from GitHub</h2>
+      <div class="project-toolbar" role="toolbar" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">all</button>
+        <button class="filter-btn" data-filter="ml">ml</button>
+        <button class="filter-btn" data-filter="physics">physics</button>
+        <button class="filter-btn" data-filter="other">other</button>
+      </div>
+    </div>
+
+    <div class="grid" id="repo-grid" aria-live="polite">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
+    <p id="repo-msg" style="color:var(--dim); font-size: 13px; margin-top: 16px;"></p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <h2><span class="num">04</span>Work with me</h2>
+      <p class="section-sub">Where I add the most value as a contractor or research collaborator.</p>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <div class="icon" aria-hidden="true">
+          <!-- nodes/edges icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="7" y1="7" x2="11" y2="16"/><line x1="17" y1="7" x2="13" y2="16"/><line x1="7" y1="6" x2="17" y2="6"/></svg>
+        </div>
+        <h4>Geometric Deep Learning architecture</h4>
+        <p>Designing equivariant / graph / manifold-aware models: GNNs, equivariant CNNs, gauge-CNNs, attention on geometric domains.</p>
+      </div>
+      <div class="svc">
+        <div class="icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14c4-6 12-6 16 0"/><path d="M4 18c4-6 12-6 16 0"/><circle cx="6" cy="8" r="1.5"/><circle cx="18" cy="8" r="1.5"/><circle cx="12" cy="6" r="1.5"/></svg>
+        </div>
+        <h4>Topological Data Analysis</h4>
+        <p>Persistent homology, Mapper, topological feature engineering, and TDA-augmented model evaluation for messy, high-dimensional data.</p>
+      </div>
+      <div class="svc">
+        <div class="icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        </div>
+        <h4>Mathematical &amp; physics consulting</h4>
+        <p>Bridging research papers and production code &mdash; turning abstract math into working models, with proper documentation a teammate can pick up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact">
+      <div>
+        <h2>Let&rsquo;s build something with shape to it.</h2>
+        <p>Open to GDL / TDA contract work, research collaborations, and interesting problems at the math&ndash;ML boundary.</p>
+        <div class="cta-row" style="margin-top: 18px;">
+          <a class="btn primary" href="mailto:aumrawal24@gmail.com">Email me <span class="arrow">&rarr;</span></a>
+          <a class="btn" id="cv" href="cv.pdf" download>Download CV</a>
+        </div>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a class="icon-btn" href="https://github.com/aumrawal" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.68.8.56C20.21 21.42 23.5 17.1 23.5 12.02 23.5 5.66 18.35.5 12 .5Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://scholar.google.com/citations?user=" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 1 7l11 6 9-4.91V17h2V7L12 1Zm0 11.4-6-3.27V11l6 3.27 6-3.27v-1.87Z"/><path d="M5 13.18v3.34c0 1.78 3.13 3.48 7 3.48s7-1.7 7-3.48v-3.34l-7 3.82-7-3.82Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/aumrawal" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9.5h4V21H3V9.5ZM9 9.5h3.8v1.57h.05c.53-1 1.83-2.07 3.78-2.07 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.07c0-1.21-.02-2.77-1.69-2.77-1.69 0-1.95 1.32-1.95 2.68V21H9V9.5Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://x.com/aumrawal" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.52 7.45L22 22h-6.844l-4.78-6.26L4.8 22H2.044l6.97-7.96L2 2h6.97l4.32 5.71L18.244 2Zm-1.2 18h1.49L7.03 4H5.45l11.594 16Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container row">
+    <div>&copy; <span id="year"></span> Aum Rawal. Built with care, dark mode, and a torus knot.</div>
+    <div><a href="https://github.com/aumrawal/aumrawal.github.io">Source on GitHub</a></div>
+  </div>
+</footer>
+
+<!-- KaTeX render (no MathJax round-trip) -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\\\(',right:'\\\\)',display:false},{left:'$$',right:'$$',display:true}]});"></script>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // build a (3,2) torus knot path
+  (function knot(){
+    const el = document.getElementById('knotPath');
+    if(!el) return;
+    const R = 150, r = 55, p = 3, q = 2, N = 600;
+    let d = '';
+    for(let i = 0; i <= N; i++){
+      const t = (i / N) * Math.PI * 2;
+      const x = (R + r * Math.cos(q * t)) * Math.cos(p * t);
+      const y = (R + r * Math.cos(q * t)) * Math.sin(p * t);
+      d += (i === 0 ? 'M' : 'L') + x.toFixed(2) + ',' + y.toFixed(2);
+    }
+    el.setAttribute('d', d);
+  })();
+
+  // reveal-on-scroll
+  const io = new IntersectionObserver(entries => {
+    for(const e of entries){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: .12 });
+  document.querySelectorAll('section, .proj, .svc').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+
+  // ----- live GitHub repo grid -----
+  const FEATURED = new Set(['GDL_Cars','TDA-Neural-Network-Latent-Space','ML-Figure-Recognition']);
+
+  function classify(repo){
+    const blob = ((repo.name || '') + ' ' + (repo.description || '') + ' ' + (repo.topics || []).join(' ')).toLowerCase();
+    if(/(gdl|tda|topolog|persisten|gnn|geometric|equivariant|neural|ml|machine|learning|cnn|transformer|deep|tensor|pytorch|jax)/.test(blob)) return 'ml';
+    if(/(physics|relativ|black|hole|gauge|gravity|cosmolog|quantum|spinor|manifold|tensor)/.test(blob)) return 'physics';
+    return 'other';
   }
-  a {
-    color:red !important;
+  function fmtDate(s){ try{ return new Date(s).toLocaleDateString(undefined,{year:'numeric',month:'short'}); }catch(e){ return ''; } }
+  function escapeHTML(s){ return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  let ALL = [];
+
+  function render(filter){
+    const grid = document.getElementById('repo-grid');
+    grid.innerHTML = '';
+    const list = ALL
+      .filter(r => !r.fork && !r.archived)
+      .filter(r => !FEATURED.has(r.name))
+      .filter(r => filter === 'all' ? true : classify(r) === filter)
+      .sort((a,b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+
+    if(list.length === 0){
+      grid.innerHTML = '<p style="color:var(--muted); grid-column: 1 / -1;">Nothing here yet for this filter.</p>';
+      return;
+    }
+    for(const repo of list){
+      const lang = repo.language || '—';
+      const desc = repo.description || 'No description provided.';
+      const card = document.createElement('article');
+      card.className = 'proj';
+      card.innerHTML = `
+        <a class="cover" href="${repo.html_url}" target="_blank" rel="noopener" aria-label="${escapeHTML(repo.name)} on GitHub"></a>
+        <h3>${escapeHTML(repo.name)}</h3>
+        <p class="desc">${escapeHTML(desc)}</p>
+        <div class="meta">
+          <span class="lang">${escapeHTML(lang)}</span>
+          <span>&#9733; ${repo.stargazers_count || 0}</span>
+          <span>&middot;</span>
+          <span>updated ${fmtDate(repo.pushed_at)}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
   }
-</style>
- -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html>
-<head>
-<title>Website</title>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+
+  async function loadRepos(){
+    const msg = document.getElementById('repo-msg');
+    try{
+      const res = await fetch('https://api.github.com/users/aumrawal/repos?per_page=100&sort=pushed');
+      if(!res.ok) throw new Error('GitHub API ' + res.status);
+      ALL = await res.json();
+      render('all');
+      msg.textContent = `Showing ${ALL.filter(r=>!r.fork && !r.archived && !FEATURED.has(r.name)).length} non-featured repositories — list pulled live from GitHub.`;
+    }catch(err){
+      document.getElementById('repo-grid').innerHTML =
+        '<p style="color:var(--muted); grid-column: 1 / -1;">Couldn\'t load the live repo list right now. Browse them all on <a href="https://github.com/aumrawal" style="color:var(--accent)">github.com/aumrawal</a>.</p>';
+      msg.textContent = '';
+    }
+  }
+  loadRepos();
+
+  // filter buttons
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render(b.dataset.filter);
+    });
+  });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id=""></script>
-<link rel="stylesheet" href="https://latex.now.sh/style.css">
-</head>
-
-<body style="max-width:100ch">
-  <header>
-    <center>
-    <h2>Aum Rawal's Home Page</h2>
-    </center>
-  </header>
-  <h3>About</h3>
-  <p>I am a mathematician with a strong background in differential geometry, topology, and mathematical physics (MSc, University of Edinburgh). My interests center on global geometric methods, analysis, and structure in physical and computational systems. This site contains research notes and expository writing reflecting my engagement with geometry and mathematical structure beyond formal coursework.
-    </p>
-   
-    <h3> Research </h3>
-    <p>
-    My most recent research project was on providing an easily comprehensible literature review for Penrose Singularity theorem. Anyone familiar with some differential geometry should be easily able to follow the text and understand the elegant proof provided by Penrose.
-    <a href = "Dissertation_final.pdf" target="_blank" > Global methods in General Relativity </a>
-    </p>
-    <p>
-      Another one of my research project was about exploring Unbroken and Broken Supersymmetry of Quantum Mechanics <a href="Thesis_titkositott.pdf" target="blank"> Broken and Unbroken Supersymetry in Quantum Mechanics </a>
-    </p>
-    <p>
-      Last but not least, I have a published article on modelling Nuclear structres as a Harmonic Oscillator. <a href="Oblate distorted HO symmtery .pdf" target="blank"> Oblate distorted harmonic oscillator symmetry </a>
-    </p>
-
-    <h3> CV </h3>
-    <p> 
-      Here is an attempt for an impressive CV - <a href = "Aum_academic CV.pdf" target="blank"> CV </a>
-    </p>
-
-
-
-
-
-    <h4 style="margin-top:40px;">Some things that I post online</h4>
-    <p> I post codes and summary for various Financial ML models on this page - <a href="Apple_data/index.html">Apple LTSM prediction</a>. Please feel free to have a look at it.
-
-    <p>This is my "knowledge repository": <a href="ExcludedGeometry/index.html">The Excluded geometry</a>. My aim is to use this website to provide solutions to some interesting math problems of topology and geometry. 
-  
-    <p>Send me an email: <a href="MAILTO:aumrawal24@gmail.com">aumrawal24@gmail.com</a></p>
-
-    <br>
-
-   
-
-    
-  </body>
-
+</body>
 </html>
-
-<style>
-  /* Change the background color to off-white and text color to black */
-  body {
-    background-color: #f5f5f5;  /* Off-white background */
-    color: black;  /* Black text color */
-  }
-
-  a {
-    color: red !important;  /* Red color for links */
-  }
-
-  /* You can keep or adjust the header styles based on the new color scheme */
-  header h2 {
-    color: #333333;  /* Dark gray color for header */
-  }
-
-  h3, h4 {
-    color: #333333;  /* Dark gray color for subheadings */
-  }
-
-  i {
-    color: #333333;  /* Dark gray for italic text */
-  }
-
-  .row {
-    justify-content: center;
-  }
-
-  img {
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for images */
-  }
-
-  img:hover {
-    transform: scale(1.05);  /* Zoom effect on hover */
-    transition: transform 0.3s ease;
-  }
-</style>
